@@ -18,17 +18,17 @@ namespace Beca.PlaylistInfo.API
         {
             modelBuilder.Entity<Playlist>()
                 .HasData(
-               new Playlist("New York Playlist")
+               new Playlist("Playlist 1")
                {
                    Id = 1,
                    Description = "The one with that big park."
                },
-               new Playlist("Antwerp")
+               new Playlist("Playlist 2")
                {
                    Id = 2,
                    Description = "The one with the cathedral that was never really finished."
                },
-               new Playlist("Paris")
+               new Playlist("Playlist 3")
                {
                    Id = 3,
                    Description = "The one with that big tower."

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Beca.PlaylistInfo.API.Migrations
 {
     [DbContext(typeof(PlaylistInfoContext))]
-    [Migration("20221104110426_playlistDBinitialMigration")]
-    partial class playlistDBinitialMigration
+    [Migration("20221109085430_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -42,19 +42,19 @@ namespace Beca.PlaylistInfo.API.Migrations
                         {
                             Id = 1,
                             Description = "The one with that big park.",
-                            Title = "New York Playlist"
+                            Title = "Playlist 1"
                         },
                         new
                         {
                             Id = 2,
                             Description = "The one with the cathedral that was never really finished.",
-                            Title = "Antwerp"
+                            Title = "Playlist 2"
                         },
                         new
                         {
                             Id = 3,
                             Description = "The one with that big tower.",
-                            Title = "Paris"
+                            Title = "Playlist 3"
                         });
                 });
 

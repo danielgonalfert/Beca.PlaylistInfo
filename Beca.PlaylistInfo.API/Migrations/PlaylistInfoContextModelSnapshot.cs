@@ -40,19 +40,19 @@ namespace Beca.PlaylistInfo.API.Migrations
                         {
                             Id = 1,
                             Description = "The one with that big park.",
-                            Title = "New York Playlist"
+                            Title = "Playlist 1"
                         },
                         new
                         {
                             Id = 2,
                             Description = "The one with the cathedral that was never really finished.",
-                            Title = "Antwerp"
+                            Title = "Playlist 2"
                         },
                         new
                         {
                             Id = 3,
                             Description = "The one with that big tower.",
-                            Title = "Paris"
+                            Title = "Playlist 3"
                         });
                 });
 

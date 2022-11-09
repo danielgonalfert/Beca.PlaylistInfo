@@ -4,7 +4,7 @@
 
 namespace Beca.PlaylistInfo.API.Migrations
 {
-    public partial class playlistDBinitialMigration : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -46,17 +46,17 @@ namespace Beca.PlaylistInfo.API.Migrations
             migrationBuilder.InsertData(
                 table: "Playlists",
                 columns: new[] { "Id", "Description", "Title" },
-                values: new object[] { 1, "The one with that big park.", "New York Playlist" });
+                values: new object[] { 1, "The one with that big park.", "Playlist 1" });
 
             migrationBuilder.InsertData(
                 table: "Playlists",
                 columns: new[] { "Id", "Description", "Title" },
-                values: new object[] { 2, "The one with the cathedral that was never really finished.", "Antwerp" });
+                values: new object[] { 2, "The one with the cathedral that was never really finished.", "Playlist 2" });
 
             migrationBuilder.InsertData(
                 table: "Playlists",
                 columns: new[] { "Id", "Description", "Title" },
-                values: new object[] { 3, "The one with that big tower.", "Paris" });
+                values: new object[] { 3, "The one with that big tower.", "Playlist 3" });
 
             migrationBuilder.InsertData(
                 table: "Songs",

@@ -8,6 +8,6 @@
 
         public string? Description { get; set; }
 
-        public PlaylistDto? Playlist { get; set; }
+        public int PlaylistId { get; set; } = -1;
     }
 }
