@@ -30,7 +30,7 @@ namespace Beca.PlaylistInfo.API.Controllers
 
         [HttpGet()]
 
-        public async Task<ActionResult<IEnumerable<Playlist>>> GetPlaylists()
+        public async Task<ActionResult<IEnumerable<PlaylistDto>>> GetPlaylists()
         {
             IEnumerable<Playlist> playlistEntities = await _playlistRepository.GetPlaylistsAsync();
             return Ok(_mapper.Map<IEnumerable<PlaylistWithoutSongsDto>>(playlistEntities));
@@ -56,7 +56,7 @@ namespace Beca.PlaylistInfo.API.Controllers
         }
 
         [HttpGet("title/{title}")]
-        public async Task<ActionResult<Playlist>> GetPlaylistByNameAsync(string title)
+        public async Task<ActionResult<PlaylistDto>> GetPlaylistByNameAsync(string title)
         {
             var playlistEntity = await _playlistRepository.GetPlaylistByNameAsync(title);
 
@@ -72,7 +72,7 @@ namespace Beca.PlaylistInfo.API.Controllers
         
         [HttpGet("paginated")]
 
-        public async Task<ActionResult<Playlist>> GetPlaylistsPaginated(string? title, string? searchQuery, int pageNumber = 1, int pageSize = 10)
+        public async Task<ActionResult<PlaylistDto>> GetPlaylistsPaginated(string? title, string? searchQuery, int pageNumber = 1, int pageSize = 10)
         {
             if (pageSize > maxPlaylistsPageSize)
             {
