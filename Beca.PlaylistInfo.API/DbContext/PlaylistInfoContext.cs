@@ -5,9 +5,9 @@ namespace Beca.PlaylistInfo.API
 {
     public class PlaylistInfoContext : DbContext
     {
-        public DbSet<Playlist> Playlists { get; set; } = null!;
+        public virtual DbSet<Playlist> Playlists { get; set; } = null!;
 
-        public DbSet<Song> Songs { get; set; } = null!;
+        public virtual DbSet<Song> Songs { get; set; } = null!;
 
         public PlaylistInfoContext(DbContextOptions<PlaylistInfoContext> options) : base(options)
         {

@@ -3,7 +3,6 @@ using AutoMapper;
 using Beca.PlaylistInfo.API.Models;
 using Beca.PlaylistInfo.API.Repositories;
 using Beca.PlaylistInfo.API.Entities;
-using Beca.PlaylistInfo.API.Models;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 using Microsoft.AspNetCore.JsonPatch;
@@ -37,7 +36,7 @@ namespace Beca.PlaylistInfo.API.Controllers
         }
 
         [HttpGet("id/{id}", Name = "GetPlaylistById")]
-        public async Task<ActionResult<Playlist>> GetPlayListByIdAsync(int id, bool withSongs = false)
+        public async Task<ActionResult<Playlist>> GetPlaylistByIdAsync(int id, bool withSongs = false)
         {
             Playlist playlistEntity = await _playlistRepository.GetPlaylistByIdAsync(id, withSongs);
 
@@ -66,13 +65,14 @@ namespace Beca.PlaylistInfo.API.Controllers
                $"No playlist with title {title} was found.");
                 return NotFound();
             }
-            return Ok(_mapper.Map<PlaylistDto>(playlistEntity));
+            var result = _mapper.Map<PlaylistDto>(playlistEntity);
+            return Ok(result);
         }
 
         
         [HttpGet("paginated")]
 
-        public async Task<ActionResult<Playlist>> GetPlaylistsPaginated(string? title, string? searchQuery, int pageNumber = 1, int pageSize = 10)
+        public async Task<ActionResult<IEnumerable<PlaylistDto>>> GetPlaylistsPaginated(string? title, string? searchQuery, int pageNumber = 1, int pageSize = 10)
         {
             if (pageSize > maxPlaylistsPageSize)
             {

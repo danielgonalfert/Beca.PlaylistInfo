@@ -24,14 +24,14 @@ namespace Beca.PlaylistInfo.API.Controllers
         }
 
         [HttpGet()]
-        public async Task<ActionResult<IEnumerable<Song>>> GetSongsAsync()
+        public async Task<ActionResult<IEnumerable<SongDto>>> GetSongsAsync()
         {
             var songEntitties = await _playlistRepository.GetSongsAsync();
             return Ok(_mapper.Map<IEnumerable<Song>>(songEntitties));
         }
 
         [HttpGet("bysongid/{id}", Name = "GetSongsById" )]
-        public async Task<ActionResult<IEnumerable<Song>>> GetSongsById(int id)
+        public async Task<ActionResult<SongDto>> GetSongsById(int id)
         {
             Song songEntities = await _playlistRepository.GetSongsByIdAsync(id);
             if(songEntities == null)
@@ -40,11 +40,12 @@ namespace Beca.PlaylistInfo.API.Controllers
                    $"Song with id {id} wasn't found when accessing songs.");
                 return NotFound();
             }
-            return Ok(_mapper.Map<SongDto>(songEntities));
+            var result = _mapper.Map<SongDto>(songEntities);
+            return Ok(result);
         }
 
         [HttpGet("byplaylistid/{id}")]
-        public async Task<ActionResult<IEnumerable<Song>>> GetSongsByPlaylistIdAsync(int id)
+        public async Task<ActionResult<IEnumerable<SongDto>>> GetSongsByPlaylistIdAsync(int id)
         {
             IEnumerable<Song> songEntities = await _playlistRepository.GetSongsByPlaylistIdAsync(id);
             if (songEntities == null)
@@ -58,9 +59,9 @@ namespace Beca.PlaylistInfo.API.Controllers
         }
 
         [HttpGet("fromplaylistbyid/{playlistId}/{songId}")]
-        public async Task<ActionResult<Song>> GetSongFromPlaylistByIdAsync(int playlistId, int songId)
+        public async Task<ActionResult<SongDto>> GetSongFromPlaylistByIdAsync(int playlistId, int songId)
         {
-            var song = await _playlistRepository.GetSongFromPlaylistById(playlistId, songId);
+            var song = await _playlistRepository.GetSongFromPlaylistByIdAsync(playlistId, songId);
 
             if (song == null)
             {
@@ -68,7 +69,7 @@ namespace Beca.PlaylistInfo.API.Controllers
                  $"Song with id {songId} wasn't found when accessing playlist with id {playlistId}.");
                 return NotFound();
             }
-            return Ok(_mapper.Map<Song>(song));
+            return Ok(_mapper.Map<SongDto>(song));
         }
 
 
