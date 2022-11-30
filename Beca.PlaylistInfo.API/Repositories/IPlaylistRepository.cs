@@ -19,7 +19,7 @@ namespace Beca.PlaylistInfo.API.Repositories
 
         Task<Song> GetSongsByIdAsync(int Id);
 
-        Task<Song> GetSongFromPlaylistById(int playlistId, int songId);
+        Task<Song> GetSongFromPlaylistByIdAsync(int playlistId, int songId);
 
         Task AddSongToPlaylistAsync(int playlistId,Song song);
  

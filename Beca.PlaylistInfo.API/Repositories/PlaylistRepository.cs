@@ -44,7 +44,7 @@ namespace Beca.PlaylistInfo.API.Repositories
             return await _context.Songs.Where(c => c.PlaylistId == Id).ToListAsync();
         }
 
-        public async Task<Song> GetSongFromPlaylistById(int playlistId, int songId)
+        public async Task<Song> GetSongFromPlaylistByIdAsync(int playlistId, int songId)
         {
             return await _context.Songs.Where(c => c.PlaylistId == playlistId && c.Id == songId).FirstOrDefaultAsync();
         }
